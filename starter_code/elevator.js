@@ -6,7 +6,7 @@ class Elevator {
     this.requests = []
     this.waitingList = []
     this.passengers = []
-		this.interval
+    this.interval
   }
 
   start() {
@@ -18,16 +18,16 @@ class Elevator {
   }
 
   update() {
-		this.log()
-		if (this.requests.length == 0) this.stop()
-		else (this.requests[0] == this.floor) ? this._compareAndLeave() : (this.requests[0] > this.floor) ? this.floorUp() : this.floorDown()
+    this.log()
+    if (this.requests.length == 0) this.stop()
+    else(this.requests[0] == this.floor) ? this._compareAndLeave() : (this.requests[0] > this.floor) ? this.floorUp() : this.floorDown()
   }
 
-	_compareAndLeave () {
-		this.requests.shift()
-		this._passengersLeave()
-		this._passengersEnter()
-	}
+  _compareAndLeave() {
+    this.requests.shift()
+    this._passengersLeave()
+    this._passengersEnter()
+  }
 
   _passengersEnter() {
     this.direction = 'Up'
@@ -44,9 +44,9 @@ class Elevator {
   _passengersLeave() {
     this.direction = 'Down'
     this.passengers.forEach(person => {
-			person.destinationFloor == this.floor ? console.log(`${person.name} has left the elevator`) : false
+      person.destinationFloor == this.floor ? console.log(`${person.name} has left the elevator`) : false
     })
-    this.passengers = this.passengers.filter(person => person.destinationFloor != this.floor) 
+    this.passengers = this.passengers.filter(person => person.destinationFloor != this.floor)
   }
 
   floorUp() {
